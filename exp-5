@@ -1,0 +1,34 @@
+import cv2
+
+# Step 1: Load the image
+image_path = r"C:\Users\kranti kumar\Pictures\images.jpg"  # Replace with your image path
+image = cv2.imread(image_path)
+
+# Check if image is loaded
+if image is None:
+    print("Error: Could not read the image.")
+    exit()
+
+# Step 2: Display original image
+cv2.imshow("Original Image", image)
+
+# Step 3: Convert to grayscale
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+cv2.imshow("Grayscale Image", gray)
+
+# Step 4: Apply Gaussian Blur
+blurred = cv2.GaussianBlur(image, (15, 15), 0)
+cv2.imshow("Blurred Image", blurred)
+
+# Step 5: Resize the image
+resized = cv2.resize(image, (300, 300))
+cv2.imshow("Resized Image (300x300)", resized)
+
+# Step 6: Save processed images (optional)
+cv2.imwrite("gray_image.jpg", gray)
+cv2.imwrite("blurred_image.jpg", blurred)
+cv2.imwrite("resized_image.jpg", resized)
+
+# Wait for a key press and close all windows
+cv2.waitKey(0)
+cv2.destroyAllWindows()
